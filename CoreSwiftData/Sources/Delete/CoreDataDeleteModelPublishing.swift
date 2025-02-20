@@ -12,7 +12,7 @@ protocol CoreDataDeleteModelPublishing {
 }
 
 extension CoreDataDeleteModelPublishing {
-    func publisher(delete request: NSFetchRequest<NSFetchRequestResult>) -> CoreDataDeleteModelPublisher {
+    public func publisher(delete request: NSFetchRequest<NSFetchRequestResult>) -> CoreDataDeleteModelPublisher {
         return CoreDataDeleteModelPublisher(delete: request,
                                             context: viewContext)
     }

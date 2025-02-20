@@ -12,7 +12,7 @@ protocol EntityCreating {
 }
 
 extension EntityCreating {
-    func createEntity<T: NSManagedObject>() -> T {
+    public func createEntity<T: NSManagedObject>() -> T {
         T(context: viewContext)
     }
 }

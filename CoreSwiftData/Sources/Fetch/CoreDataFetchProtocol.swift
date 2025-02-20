@@ -12,7 +12,7 @@ protocol CoreDataFetchProtocol {
 }
 
 extension CoreDataFetchProtocol {
-    func publisher<T: NSManagedObject>(fetch request: NSFetchRequest<T>) -> CoreDataFetchResultsPublisher<T> {
+    public func publisher<T: NSManagedObject>(fetch request: NSFetchRequest<T>) -> CoreDataFetchResultsPublisher<T> {
         return CoreDataFetchResultsPublisher(request: request,
                                              context: viewContext)
     }

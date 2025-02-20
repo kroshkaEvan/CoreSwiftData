@@ -12,7 +12,7 @@ protocol CoreDataSaveProtocol {
 }
 
 extension CoreDataSaveProtocol {
-    func publisher(save action: @escaping Action) -> CoreDataSaveModelPublisher {
+    public func publisher(save action: @escaping Action) -> CoreDataSaveModelPublisher {
         return CoreDataSaveModelPublisher(action: action,
                                           context: viewContext)
     }

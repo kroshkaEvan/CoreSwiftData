@@ -6,18 +6,18 @@
 
 import CoreData
 
-protocol CoreDataManagerProtocol: EntityCreating,
+public protocol CoreDataManagerProtocol: EntityCreating,
                                   CoreDataFetchProtocol,
                                   CoreDataSaveProtocol,
                                   CoreDataDeleteModelPublishing {
     var viewContext: NSManagedObjectContext { get }
 }
 
-open class CoreDataManager: CoreDataManagerProtocol {
+public class CoreDataManager: CoreDataManagerProtocol {
     
-    var container: NSPersistentContainer
+    private var container: NSPersistentContainer
     
-    var dataBaseName: String
+    public var dataBaseName: String
     
     @MainActor
     static let preview: CoreDataManager = {
@@ -26,11 +26,11 @@ open class CoreDataManager: CoreDataManagerProtocol {
         return result
     }()
     
-    var viewContext: NSManagedObjectContext {
+    public var viewContext: NSManagedObjectContext {
         return self.container.viewContext
     }
     
-    init(dataBaseName: String, inMemory: Bool = false) {
+    public init(dataBaseName: String, inMemory: Bool = false) {
         self.dataBaseName = dataBaseName
         container = NSPersistentContainer(name: self.dataBaseName)
         if inMemory {
@@ -48,7 +48,7 @@ open class CoreDataManager: CoreDataManagerProtocol {
         })
     }
     
-    init(container: NSPersistentContainer) {
+    public init(container: NSPersistentContainer) {
         self.container = container
         self.dataBaseName = container.name
     }
