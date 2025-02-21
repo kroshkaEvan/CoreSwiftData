@@ -17,11 +17,11 @@ public class CoreDataManager: CoreDataManagerProtocol {
     
     private var container: NSPersistentContainer
     
-    public var dataBaseName: String
+    var dataBaseName: String
     
     @MainActor
     static let preview: CoreDataManager = {
-        let result = CoreDataManager(dataBaseName: dataBaseName,
+        let result = CoreDataManager(dataBaseName: "PreviewDatabase",
                                      inMemory: false)
         return result
     }()

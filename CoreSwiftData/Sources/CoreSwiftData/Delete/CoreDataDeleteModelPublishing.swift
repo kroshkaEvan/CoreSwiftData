@@ -6,7 +6,7 @@
 
 import CoreData
 
-protocol CoreDataDeleteModelPublishing {
+public protocol CoreDataDeleteModelPublishing {
     var viewContext: NSManagedObjectContext { get }
     func publisher(delete request: NSFetchRequest<NSFetchRequestResult>) -> CoreDataDeleteModelPublisher
 }

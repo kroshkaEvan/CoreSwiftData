@@ -6,7 +6,7 @@
 
 import CoreData
 
-protocol EntityCreating {
+public protocol EntityCreating {
     var viewContext: NSManagedObjectContext { get }
     func createEntity<T: NSManagedObject>() -> T
 }

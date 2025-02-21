@@ -6,7 +6,7 @@
 
 import CoreData
 
-protocol CoreDataFetchProtocol {
+public protocol CoreDataFetchProtocol {
     var viewContext: NSManagedObjectContext { get }
     func publisher<T: NSManagedObject>(fetch request: NSFetchRequest<T>) -> CoreDataFetchResultsPublisher<T>
 }

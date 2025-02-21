@@ -6,7 +6,7 @@
 
 import CoreData
 
-protocol CoreDataSaveProtocol {
+public protocol CoreDataSaveProtocol {
     var viewContext: NSManagedObjectContext { get }
     func publisher(save action: @escaping Action) -> CoreDataSaveModelPublisher
 }
