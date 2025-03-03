@@ -1,8 +1,7 @@
 //
-//  ContentView.swift
 //  BankCards
 //
-//  Created by Evan Tsvetkov on 19.02.25.
+//  Created by Evan Tsvetkov
 //
 
 import SwiftUI
@@ -21,41 +20,39 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Spacer()
-                    .fullScreenCover(isPresented: $shouldPresentCardForm) {
-                        AddBankCard()
-                    }
-                Spacer()
-                
-                if cards.isEmpty {
-                    EmptyCardView(shouldPresentCardForm: $shouldPresentCardForm)
-                } else {
-                    Spacer()
-                    
-                    WalletView()
-                        .environmentObject(Wallet(cards: cards))
-                        .frame(height: 600)
-                }
-            }
-            .navigationTitle("My Wallet")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    DeleteItemButton(cards: cards, modelContext: modelContext)
-                }
-                
-                ToolbarItem(placement: .topBarTrailing) {
-                    AddCardButton(shouldPresentCardForm: $shouldPresentCardForm)
-                }
-            }
-            .background {
+            ZStack {
                 LinearGradient(
                     gradient: Gradient(colors: [.mint, .black]),
                     startPoint: .top,
                     endPoint: .bottom
                 )
+                .ignoresSafeArea()
+
+                VStack {
+                    Spacer()
+
+                    if cards.isEmpty {
+                        EmptyCardView(shouldPresentCardForm: $shouldPresentCardForm)
+                            .frame(maxHeight: .infinity, alignment: .center)
+                    } else {
+                        WalletView()
+                            .environmentObject(Wallet(cards: cards))
+                            .frame(height: 600)
+                    }
+
+                    Spacer()
+                }
+                .sheet(isPresented: $shouldPresentCardForm) {
+                    AddBankCard()
+                }
             }
-            .ignoresSafeArea()
+            .navigationTitle("My Wallet")
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    DeleteItemButton(cards: cards, modelContext: modelContext)
+                    AddCardButton(shouldPresentCardForm: $shouldPresentCardForm)
+                }
+            }
         }
     }
 }

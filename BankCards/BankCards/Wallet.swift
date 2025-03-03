@@ -1,8 +1,7 @@
 //
-//  Wallet.swift
 //  BankCards
 //
-//  Created by Evan Tsvetkov on 19.02.25.
+//  Created by Evan Tsvetkov
 //
 
 import SwiftUI
