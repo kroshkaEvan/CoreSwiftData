@@ -4,22 +4,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "CoreSwiftData",
+    name: "CoreCombineData",
     platforms: [.iOS(.v13), .macOS(.v11)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "CoreSwiftData",
-            targets: ["CoreSwiftData"]),
+            name: "CoreCombineData",
+            targets: ["CoreCombineData"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "CoreSwiftData"),
+            name: "CoreCombineData"),
         .testTarget(
-            name: "CoreSwiftDataTests",
-            dependencies: ["CoreSwiftData"]
+            name: "CoreCombineDataTests",
+            dependencies: ["CoreCombineData"]
         ),
     ]
 )
